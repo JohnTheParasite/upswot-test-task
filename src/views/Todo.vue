@@ -1,5 +1,8 @@
 <template>
-  <div class="logo-block"></div>
+  <div class="page">
+    <div class="logo-block"></div>
+  </div>
+
 
 </template>
 
@@ -10,5 +13,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .logo-block {
+    width: 100%;
+    height: 797px;
+    background: linear-gradient(180deg, #00AFED 0%, #00569A 100%);
+  }
 </style>

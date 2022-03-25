@@ -4,7 +4,7 @@
       <div class="upper-block"></div>
       <div class="logo-block">
         <div class="content">
-          <img alt="Logo" src="../assets/logo.png">
+          <img alt="Logo" src="../assets/logo.png" height="66" width="103">
         </div>
       </div>
       <div class="background-pic">
@@ -239,6 +239,7 @@ export default {
 
       img {
         height: 30px;
+        width: 52px;
       }
 
       .background-pic {
