@@ -2,90 +2,92 @@
   <div class="page">
     <div class="upper-half">
       <div class="upper-block"></div>
-      <div class="logo-block"></div>
+      <div class="logo-block">
+        <div class="content">
+          <img alt="Logo" src="../assets/logo.png">
+        </div>
+      </div>
       <div class="background-pic">
         <div class="content">
           <div class="welcome-text">
-          Welcome to<br/>
-          Business Analytics Online
+            Welcome to<br/>
+            Business Analytics Online
           </div>
         </div>
       </div>
     </div>
     <div class="lower-half">
-      <div class="content text-block">
-        <div class="left-part">
-          <div>
-            Business Analytics — a new, convenient tool for managing and forecasting your business performance, which
-            will help analyze your own finances and cash flows, visualize your reporting, business processes, KPI's
-          </div>
-          <div>In just a few clicks, you can connect your data from 1C, CRM (Bitrix24, AmoCRM, ZohoCRM), E-commerce (PROM.UA, Rozetka, ebay), Logistic (Nova Poshta), Google Analytics and many more systems that reflect different aspects of business activities.</div>
-          <div>In just a few clicks, you can connect your data from 1C, CRM (Bitrix24, AmoCRM, ZohoCRM), E-commerce (PROM.UA, Rozetka, ebay), Logistic (Nova Poshta), Google Analytics and many more systems that reflect different aspects of business activities.</div>
-          <div>In just a few clicks, you can connect your data from 1C, CRM (Bitrix24, AmoCRM, ZohoCRM), E-commerce (PROM.UA, Rozetka, ebay), Logistic (Nova Poshta), Google Analytics and many more systems that reflect different aspects of business activities.</div>
-        </div>
-        <div class="right-part">
-          <div class="login-page">
-            <form @submit="login">
-              <div class="inputs">
-                <text-input ref="login" label="Name" @input="onInput('login', $event)"></text-input>
-                <text-input ref="password" label="Password" type="password"
-                            @input="onInput('password', $event)"></text-input>
-              </div>
-              <div class="buttons">
-                <form-button label="LOGIN" :disabled="!enableSubmit" type="submit"/>
-                <a target="_blank" class="forgot">
-                  Forgot Password
-                </a>
-              </div>
-            </form>
-            <div class="register">
-              Register now
+      <div class="text-and-form">
+        <div class="content text-block">
+          <div class="left-part">
+            <div class="about">
+              <b>Business Analytics</b> — a new, convenient tool for managing and forecasting your business performance,
+              which
+              will help analyze your own finances and cash flows, visualize your reporting, business processes, KPI's
             </div>
+            <div class="about-item">
+              <div class="check-head">
+                <img alt="check.png" src="../assets/check.png">
+                <b>Interactive Reporting</b>
+              </div>
+              <div class="text">In just a few clicks, you can connect your data from 1C, CRM (Bitrix24, AmoCRM,
+                ZohoCRM), E-commerce (PROM.UA, Rozetka, ebay), Logistic (Nova Poshta), Google Analytics and many more
+                systems that reflect different aspects of business activities.
+              </div>
+            </div>
+            <div class="about-item">
+              <div class="check-head">
+                <img alt="check.png" src="../assets/check.png">
+                <b>Automated data updates</b>
+              </div>
+              <div class="text">The application automatically updates and structures the data in just 60 seconds, saving
+                you time and money.
+              </div>
+            </div>
+            <div class="about-item">
+              <div class="check-head">
+                <img alt="check.png" src="../assets/check.png">
+                <b>Data Security</b>
+              </div>
+              <div class="text">The Bank guarantees the safety of your personal data, ensuring their integrity and
+                confidentiality.
+              </div>
+            </div>
+          </div>
+          <div class="right-part">
+            <login-form/>
           </div>
         </div>
       </div>
-      <div class="lower-block"></div>
+      <div class="lower-block">
+        <div class="content">
+          <div class="upper-cellar">
+            <img alt="Logo" src="../assets/logo.png" height="35" width="56">
+            <div class="additional-links">
+              <div>Terms & Conditions</div>
+              <div>Privacy</div>
+              <div>Notice at Collection</div>
+              <div>CA Privacy Hub</div>
+              <div>Contact Us</div>
+              <div>Sitemap</div>
+            </div>
+          </div>
+          <div class="lower-cellar">
+            Copyright © 2020 Citigroup Inc. Citibank, N.A. Member FDIC. Equal Opportunity Lender.
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import TextInput from "@/components/controls/TextInput";
-import FormButton from "@/components/controls/FormButton";
+
+import LoginForm from "@/components/LoginForm";
 
 export default {
   name: 'Login',
-  components: {FormButton, TextInput},
-  data() {
-    return {
-      formGroup: {
-        login: "",
-        password: ""
-      },
-      errorMessage: "Enter"
-    }
-  },
-  methods: {
-    login(event) {
-      event.preventDefault()
-      event.stopImmediatePropagation()
-      if (this.formGroup.login === "Admin" && this.formGroup.password === "12345") {
-        localStorage.setItem("logged", "true");
-        this.$router.push("/todo");
-      } else {
-        this.$refs.login.showError("Wrong login");
-        this.$refs.password.showError("or wrong password");
-      }
-    },
-    onInput(field, value) {
-      this.formGroup[field] = value;
-    }
-  },
-  computed: {
-    enableSubmit() {
-      return this.formGroup.login.length && this.formGroup.password.length
-    }
-  }
+  components: {LoginForm}
 }
 </script>
 
@@ -104,6 +106,9 @@ export default {
     }
 
     .logo-block {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background: linear-gradient(180deg, #00AFED 0%, #00569A 100%);
       height: 96px;
     }
@@ -125,130 +130,195 @@ export default {
     }
   }
 
-  .lower-half {
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    .text-block {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .lower-block {width: 100%;
-      background-color: #333333;
-      height: 175px;
-    }
-  }
-
-
   .login-page {
     margin-top: -180px;
+    width: 481px;
+  }
 
+  .lower-half {
+    height: 50%;
 
-
-    width: 100%;
-    height: 464px;
-    background: #FFFFFF;
-    box-shadow: 2px 2px 15px 2px rgba(0, 0, 0, 0.1);
-
-    .inputs {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      margin: 40px 30px 0 30px;
-      //width: 421px;
-    }
-
-    .buttons {
+    .text-and-form {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      margin: 0px 30px;
-      //width: 421px;
 
-      .btn {
-        height: 53px;
-        font-weight: 400;
-        font-size: 25px;
-        line-height: 29px;
-        margin-top: 0;
-        margin-bottom: 20px;
-        width: 100%;
-      }
+      .text-block {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 16px;
+        color: #333333;
+        font-size: 14px;
 
-      .forgot {
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 23px;
-        cursor: pointer;
-        margin-bottom: 23px;
-        color: #056DAE;
+        .left-part {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          font-size: 14px;
+          margin: 40px 0;
+
+          .about {
+            font-size: 16px;
+          }
+
+          b {
+            font-weight: 500;
+            font-size: 16px;
+          }
+
+          .about-item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .check-head {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              gap: 15px;
+            }
+
+            .text {
+              margin-left: 38px;
+            }
+          }
+        }
       }
     }
 
-    .register {
+    .lower-block {
       display: flex;
-      align-items: center;
       justify-content: center;
-      background-color: #F6F6F6;
-      height: 63px;
-      cursor: pointer;
+      align-items: center;
+      width: 100%;
+      background-color: #333333;
+      height: 175px;
+      color: #FFFFFF;
 
-      font-weight: 400;
-      font-size: 25px;
-      line-height: 29px;
+      .upper-cellar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #FFFFFF;
+        padding-bottom: 31px;
+        margin-bottom: 30.5px;
 
-      color: #333333;
+        .additional-links {
+          display: flex;
+          flex-direction: row;
+          gap: 20px;
+          cursor: pointer;
+        }
+      }
+
+      .lower-cellar {
+        font-size: 15px;
+        font-weight: 500;
+      }
     }
   }
 
   @media screen and (max-width: 768px) {
     .content {
       width: 100%;
+      display: flex;
+      justify-content: center;
     }
 
-    .upper-block {
-      display: none;
-    }
     .upper-half {
-
       height: 140px;
+
+      .upper-block {
+        display: none;
+      }
+
       .logo-block {
         height: 40px;
+      }
+
+      img {
+        height: 30px;
+      }
+
+      .background-pic {
+        height: calc(100% - 40px);
+
+        .welcome-text {
+          text-align: center;
+          font-size: 20px;
+          margin-bottom: 20px;
+        }
       }
     }
 
     .lower-half {
       height: auto;
 
-      .text-block{
-        display: flex;
-        flex-direction: column-reverse;
+      .text-and-form {
 
-        .login-page {
-          margin-top: 0;
+        .right-part {
+          margin-top: 5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
-      }
-    }
 
+        .text-block {
+          display: flex;
+          flex-direction: column-reverse;
 
+          .left-part {
+            margin: 20px 10px 20px 10px;
+          }
 
-      .upper-half {
-        .background-pic {
-          height: calc(100% - 40px);
-          .welcome-text {
-            font-size: 20px;
-            margin-bottom: 5px;
+          .login-page {
+            margin-top: 0;
           }
         }
       }
 
+      .lower-block {
+        .content {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        img {
+          display: none;
+        }
+      }
+    }
   }
 
+  @media screen and (max-width: 425px) {
+    .lower-half {
+      .lower-block {
+        .content {
+          margin: 0 10px;
+          align-items: normal;
+
+          .upper-cellar {
+            padding-bottom: 1px;
+            border: none;
+            margin: 0;
+
+            .additional-links {
+              flex-direction: column;
+              gap: 0;
+            }
+          }
+
+          .lower-cellar {
+            padding: 6px 0 0 0;
+          }
+        }
+      }
+    }
+  }
 }
 
 </style>

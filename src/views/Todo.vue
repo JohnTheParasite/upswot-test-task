@@ -1,5 +1,6 @@
 <template>
   <div class="logo-block"></div>
+
 </template>
 
 <script>
