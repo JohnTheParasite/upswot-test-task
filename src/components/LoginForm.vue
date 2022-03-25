@@ -2,9 +2,9 @@
   <div class="login-page">
     <form @submit="login">
       <div class="inputs">
-        <text-input ref="login" label="Name" @input="onInput('login', $event)"></text-input>
+        <text-input ref="login" label="Name" @input="onInput('login', $event)" required></text-input>
         <text-input ref="password" label="Password" type="password"
-                    @input="onInput('password', $event)"></text-input>
+                    @input="onInput('password', $event)" required></text-input>
       </div>
       <div class="buttons">
         <form-button label="LOGIN" :disabled="!enableSubmit" type="submit"/>
@@ -41,6 +41,7 @@ export default {
       event.stopImmediatePropagation()
       if (this.formGroup.login === "Admin" && this.formGroup.password === "12345") {
         localStorage.setItem("logged", "true");
+        localStorage.setItem("username", this.formGroup.login);
         this.$router.push("/todo");
       } else {
         this.$refs.login.showError("Wrong login");

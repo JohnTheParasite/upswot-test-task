@@ -15,6 +15,7 @@ html, #app, body {
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
+  background-color: #E5E5E5;
 }
 
 

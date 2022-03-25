@@ -136,6 +136,7 @@ export default {
   }
 
   .lower-half {
+    background-color: white;
     height: 50%;
 
     .text-and-form {

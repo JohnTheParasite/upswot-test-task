@@ -1,9 +1,9 @@
 <template>
   <div class="form-group">
-    <label class="input-label" >{{ label }}</label>
-    <div class="input-group" :class="{ invalid: hasError }" role="group">
+    <label v-if="this.label.length" class="input-label" >{{ label }}</label>
+    <div class="input-group" :class="{ invalid: hasError, required: required }" role="group">
       <input class="form-control" :class="{ invalid: hasError }" :type="type" v-model.trim="inputModel" @focusout="focusout" @input="input">
-      <div v-show="errorMessage">
+      <div v-if="this.required" v-show="errorMessage">
         <img alt="X" src="../../assets/error.svg">
         <small class="text-error">{{errorMessage}}</small>
       </div>
@@ -27,6 +27,14 @@ export default {
     type: {
       type: String,
       default: "text"
+    },
+    initValue: {
+      type: String,
+      default: ""
+    },
+    required: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -51,9 +59,12 @@ export default {
       this.errorMessage = Message;
     }
   },
+  created() {
+    this.inputModel = this.initValue;
+  },
   computed: {
     hasError() {
-      return this.errorMessage.length || this.warningMessage === "Wrong"
+      return this.required && (this.errorMessage.length || this.warningMessage === "Wrong")
     }
   }
 }
@@ -75,7 +86,10 @@ export default {
   .input-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 40px;
+
+    &.required {
+      margin-bottom: 40px;
+    }
 
     &.invalid {
       margin-bottom: 16px;
