@@ -64,17 +64,20 @@ export default {
 .login-page {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   width: 100%;
   height: 464px;
   background: #FFFFFF;
   box-shadow: 2px 2px 15px 2px rgba(0, 0, 0, 0.1);
 
+  form {
+    padding: 40px 30px 0;
+  }
   .inputs {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 40px 30px 0 30px;
   }
 
   .buttons {
@@ -82,7 +85,6 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 0 30px;
 
     .btn {
       height: 53px;
@@ -90,7 +92,6 @@ export default {
       font-size: 25px;
       line-height: 29px;
       margin-top: 0;
-      margin-bottom: 20px;
       width: 100%;
     }
 
@@ -98,8 +99,8 @@ export default {
       font-weight: 400;
       font-size: 20px;
       line-height: 23px;
+      padding: 20px 0 23px;
       cursor: pointer;
-      margin-bottom: 23px;
       color: #056DAE;
     }
   }

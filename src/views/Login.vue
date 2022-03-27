@@ -95,10 +95,15 @@ export default {
 .page {
   width: 100%;
   height: 100%;
+  line-height: 156.69%;
 
   .upper-half {
     height: 50%;
     overflow: hidden;
+
+    .content {
+      margin: 0 10px;
+    }
 
     .upper-block {
       background-color: #333333;
@@ -137,7 +142,7 @@ export default {
 
   .lower-half {
     background-color: white;
-    height: 50%;
+    //height: 50%;
 
     .text-and-form {
       display: flex;
@@ -158,6 +163,7 @@ export default {
           gap: 15px;
           font-size: 14px;
           margin: 40px 0;
+          padding-left: 10px;
 
           .about {
             font-size: 16px;
@@ -197,32 +203,68 @@ export default {
       height: 175px;
       color: #FFFFFF;
 
-      .upper-cellar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid #FFFFFF;
-        padding-bottom: 31px;
-        margin-bottom: 30.5px;
+      .content {
+        margin: 0 10px;
 
-        .additional-links {
+        .upper-cellar {
           display: flex;
-          flex-direction: row;
-          gap: 20px;
-          cursor: pointer;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid #FFFFFF;
+          padding-bottom: 31px;
+          margin-bottom: 30.5px;
+
+          .additional-links {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            cursor: pointer;
+          }
+        }
+
+        .lower-cellar {
+          font-size: 15px;
+          font-weight: 500;
         }
       }
+    }
+  }
 
-      .lower-cellar {
-        font-size: 15px;
-        font-weight: 500;
+  @media screen and (max-width: 1164px) {
+
+    .content {
+      width: 100%;
+    }
+
+    .lower-half {
+
+      .text-and-form {
+
+        .right-part {
+          width: 35%;
+          margin-top: 5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .text-block {
+          display: flex;
+
+          .left-part {
+            margin: 20px 0;
+          }
+
+          .login-page {
+            margin-top: 0;
+          }
+        }
       }
     }
   }
 
   @media screen and (max-width: 768px) {
     .content {
-      width: 100%;
       display: flex;
       justify-content: center;
     }
@@ -235,12 +277,15 @@ export default {
       }
 
       .logo-block {
-        height: 40px;
+        height: 45px;
       }
 
       img {
-        height: 30px;
-        width: 52px;
+        display: block;
+        max-width: 52px;
+        max-height: 30px;
+        width: auto;
+        height: auto;
       }
 
       .background-pic {
@@ -261,6 +306,7 @@ export default {
 
         .right-part {
           margin-top: 5px;
+          width: 100%;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -271,7 +317,7 @@ export default {
           flex-direction: column-reverse;
 
           .left-part {
-            margin: 20px 10px 20px 10px;
+            margin: 20px 0;
           }
 
           .login-page {
@@ -281,6 +327,9 @@ export default {
       }
 
       .lower-block {
+
+        height: 245px;
+
         .content {
           width: 100%;
           display: flex;
@@ -296,9 +345,11 @@ export default {
     }
   }
 
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 700px) {
+
     .lower-half {
       .lower-block {
+
         .content {
           margin: 0 10px;
           align-items: normal;

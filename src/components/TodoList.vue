@@ -67,7 +67,7 @@ export default {
 
   .btn {
     margin-top: 0;
-    height: 53px;
+    height: 54px;
     width: 105px;
   }
 }
@@ -85,64 +85,38 @@ export default {
 
     &.done {
       background-color: #9A9A9A;
+      text-decoration: line-through;
       color: #333333;
     }
   }
 
   .task-text {
-    padding: 15px 0 15px 15px;
-    width: 100%;
-    vertical-align: middle;
+    padding: 15px;
+    width: calc(100% - 25px);
     font-weight: 400;
     font-size: 18px;
+    white-space: pre-wrap;
+    word-break: break-all;
   }
 
   .btn {
     margin-top: 0;
-    height: 53px;
+    height: 54px;
     width: 105px;
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 650px) {
   .todo-element {
+    width: 99vw;
 
     .text {
-      width: 230px;
-      cursor: pointer;
-      background-color: #00AFED;
-
-      &.done {
-        background-color: #9A9A9A;
-        color: #333333;
-      }
+      width: 60%;
     }
 
     .btn {
-      width: 70px;
-      padding: 8px 5px;
-    }
-  }
-}
-
-@media screen and (max-width: 425px) {
-  .todo-element {
-
-    .text {
-      width: 55%;
-      cursor: pointer;
-      background-color: #00AFED;
-
-      &.done {
-        background-color: #9A9A9A;
-        color: #333333;
-      }
-    }
-
-    .btn {
-      width: 55px;
-      padding: 8px 5px;
-      font-size: 12px;
+      width: 18%;
+      padding: 0;
     }
   }
 }

@@ -4,7 +4,8 @@
     <div class="content">
       <img alt="Logo" src="../assets/logo.png" height="119" width="186">
       <div class="body">
-        <div class="hello">Thank you {{loggedUser}}!</div>
+        <div class="hello">Thank you {{ loggedUser }}!</div>
+        <form-button label="Logout" @click="logout"/>
         <todo-list></todo-list>
       </div>
     </div>
@@ -15,9 +16,17 @@
 
 <script>
 import TodoList from "@/components/TodoList";
+import FormButton from "@/components/controls/FormButton";
+
 export default {
   name: "Todo",
-  components: {TodoList},
+  components: {FormButton, TodoList},
+  methods: {
+    logout() {
+      localStorage.setItem("logged", false);
+      this.$router.push("/login");
+    }
+  },
   computed: {
     loggedUser() {
       return localStorage.getItem("username") || "*user not found*"
@@ -61,6 +70,12 @@ export default {
         margin-top: 32px;
         font-weight: 700;
         font-size: 60px;
+        line-height: 94px;
+        text-align: center;
+      }
+
+      .btn {
+        height: 53px;
       }
     }
   }
@@ -71,6 +86,7 @@ export default {
     }
     .content {
       width: 650px;
+      justify-content: start;
 
       img {
         display: block;
@@ -78,17 +94,20 @@ export default {
         max-height: 80px;
         width: auto;
         height: auto;
+        margin: 15px 15px;
       }
     }
   }
 
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 500px) {
+
     .content {
-      width: 420px;
+      width: 100%;
 
       .body {
         .hello {
           font-size: 30px;
+          line-height: 100%;
         }
       }
     }
